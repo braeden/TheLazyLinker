@@ -1,2 +1,2 @@
 # TheLazyLinker
-See original changes: https://gist.github.com/braeden123/930297c9bec7152e67c4
+See original changes/commits: https://gist.github.com/braeden123/930297c9bec7152e67c4
