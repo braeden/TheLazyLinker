@@ -86,7 +86,7 @@ while True:
 					# Now we can try to post
 					if not ignore_post:
 						try: 
-							submission.add_comment("Subreddit mentioned in the title: /r/" + subreddit_stripped + "\n\n \-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\- \n\n  *^^I'm ^^a ^^bot, ^^a ^^score ^^< ^^0 ^^deletes* \n\n ^^^[Code](https://gist.github.com/braeden123/930297c9bec7152e67c4) ^^^[Contact](https://www.reddit.com/message/compose/?to=bsmith0)")
+							submission.add_comment("Subreddit mentioned in the title: /r/" + subreddit_stripped + "\n\n \-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\- \n\n  *^^I'm ^^a ^^bot, ^^a ^^score ^^< ^^0 ^^deletes* \n\n ^^^[Code](https://github.com/braeden123/TheLazyLinker) ^^^[Contact](https://www.reddit.com/message/compose/?to=bsmith0)")
 						except:
 							print("exception")
 
