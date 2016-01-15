@@ -56,7 +56,8 @@ while True:
 				subreddit_some_punct = re.sub(r"[^a-zA-Z0-9_'\.\]\)]", "", subreddit_link[0]) # Strip punctiation except a few cases _ and things that require the deleteion of the rest of the string
 				subreddit_some_punct = subreddit_some_punct.split(']', 1)[0] # Only take the first part after enountering char
 				subreddit_some_punct = subreddit_some_punct.split(')', 1)[0] # ^
-				subreddit_stripped= subreddit_some_punct.split('.', 1)[0]    # ^
+				subreddit_some_punct = subreddit_some_punct.split('\'', 1)[0] # ^
+				subreddit_stripped = subreddit_some_punct.split('.', 1)[0]    # ^
 				if str(submission.subreddit).lower() != subreddit_stripped.lower(): # Not referencing the subreddit its posted in
 					posts_replied_to.append(submission.id) #Add to file
 					ignore_post = False
