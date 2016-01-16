@@ -53,9 +53,11 @@ while True:
 			# Do a case insensitive search
 			if re.findall(r"[^a-zA-Z0-9]r/([^\s/]+)", submission.title, re.IGNORECASE): # If the initial pattern exist in title
 				subreddit_link = re.findall(r"[^a-zA-Z0-9]r/([^\s/]+)", submission.title, re.IGNORECASE) # Put intial pattern matches into string 
-				subreddit_some_punct = re.sub(r"[^a-zA-Z0-9_'\.\]\)]", "", subreddit_link[0]) # Strip punctiation except a few cases _ and things that require the deleteion of the rest of the string
+				subreddit_some_punct = re.sub(r"[^a-zA-Z0-9_'\.\[\]\(\)]", "", subreddit_link[0]) # Strip punctiation except a few cases _ and things that require the deleteion of the rest of the string
 				subreddit_some_punct = subreddit_some_punct.split(']', 1)[0] # Only take the first part after enountering char
-				subreddit_some_punct = subreddit_some_punct.split(')', 1)[0] # ^
+				subreddit_some_punct = subreddit_some_punct.split('[', 1)[0]
+				subreddit_some_punct = subreddit_some_punct.split(')', 1)[0]
+				subreddit_some_punct = subreddit_some_punct.split('(', 1)[0] # ^
 				subreddit_some_punct = subreddit_some_punct.split('\'', 1)[0] # ^
 				subreddit_stripped = subreddit_some_punct.split('.', 1)[0]    # ^
 				if str(submission.subreddit).lower() != subreddit_stripped.lower(): # Not referencing the subreddit its posted in
