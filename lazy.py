@@ -38,6 +38,7 @@ else:
 # Get the top 5 values from our subreddit
 subreddit = r.get_subreddit('all')
 excluded_subs = ["mistyfront",  "longtail", "AskElectronics"];
+split_punct = ["[",  "]", "(", ")", ".", "\'"];
 while True:
 	for i in range(60,0,-1): # Search every 1 minutes
 		os.system('clear')
@@ -54,12 +55,11 @@ while True:
 			if re.findall(r"[^a-zA-Z0-9]r/([^\s/]+)", submission.title, re.IGNORECASE): # If the initial pattern exist in title
 				subreddit_link = re.findall(r"[^a-zA-Z0-9]r/([^\s/]+)", submission.title, re.IGNORECASE) # Put intial pattern matches into string 
 				subreddit_some_punct = re.sub(r"[^a-zA-Z0-9_'\.\[\]\(\)]", "", subreddit_link[0]) # Strip punctiation except a few cases _ and things that require the deleteion of the rest of the string
-				subreddit_some_punct = subreddit_some_punct.split(']', 1)[0] # Only take the first part after enountering char
-				subreddit_some_punct = subreddit_some_punct.split('[', 1)[0]
-				subreddit_some_punct = subreddit_some_punct.split(')', 1)[0]
-				subreddit_some_punct = subreddit_some_punct.split('(', 1)[0] # ^
-				subreddit_some_punct = subreddit_some_punct.split('\'', 1)[0] # ^
-				subreddit_stripped = subreddit_some_punct.split('.', 1)[0]    # ^
+				
+				for punct in split_punct:
+					subreddit_some_punct = subreddit_some_punct.split(punct, 1)[0]	# Only take the first part after enountering char
+				subreddit_stripped = subreddit_some_punct
+
 				if str(submission.subreddit).lower() != subreddit_stripped.lower(): # Not referencing the subreddit its posted in
 					posts_replied_to.append(submission.id) #Add to file
 					ignore_post = False
