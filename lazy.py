@@ -6,7 +6,7 @@ import time
 import string
 from config import *
 from functions import *
-#See fucntions.py the majority of the imporant code
+#See functions.py the majority of the important code
 
 # Check that the file that contains our username exists
 if not os.path.isfile("config.py"):
@@ -49,11 +49,11 @@ while True:
 		if submission.id not in posts_replied_to:
 			# Do a case insensitive search
 			if re.findall(r"[^a-zA-Z0-9]r/([^\s/]+)", submission.title, re.IGNORECASE): # If the initial pattern exist in title
-				subreddit_stripped = strip_subreddit(submission);
+				subreddit_stripped = strip_subreddit(submission, split_punct);
 
 				posts_replied_to.append(submission.id) #Add to file
 				# Now we can try to post
-				if not is_post_ignored(submission):
+				if not is_post_ignored(submission, subreddit_stripped, excluded_subs, other_bots):
 					try: 
 						submission.add_comment("Subreddit mentioned in the title: /r/" + subreddit_stripped + "\n\n \-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\- \n\n  *^^I'm ^^a ^^bot, ^^a ^^score ^^< ^^0 ^^deletes* \n\n ^^^[Code](https://github.com/braeden123/TheLazyLinker) ^^^[Contact](https://www.reddit.com/message/compose/?to=bsmith0)")
 					except:
@@ -64,6 +64,3 @@ while True:
 		for post_id in posts_replied_to:
 			f.write(post_id + "\n")
 	delete_low_comments(r); # Give praw to function
-
-
-
