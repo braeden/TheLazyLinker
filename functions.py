@@ -30,7 +30,7 @@ def is_post_ignored(submission):
 	return(False);
 
 
-def delete_low_comments():
+def delete_low_comments(r):
 	user = r.get_redditor('TheLazyLinker')
 	for comment in user.get_comments(limit=None):
 	  if (comment.score < 0):
