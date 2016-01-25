@@ -34,7 +34,7 @@ else:
 subreddit = r.get_subreddit('all')
 
 excluded_subs = ["mistyfront",  "longtail", "AskElectronics"]; # Subs to ignore (most of the time I'm banned) 
-split_punct = ["[",  "]", "(", ")", ".", "\'"]; #Punctuation marks that require the stripping of anything afterwards
+split_punct = ["[",  "]", "(", ")", ".", "\'", "-"]; #Punctuation marks that require the stripping of anything afterwards
 other_bots = ["XPostLinker", "OriginalPostSearcher"]; #Bots that might already comments (so we ignore the post)
 
 while True:
